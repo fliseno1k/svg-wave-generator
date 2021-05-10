@@ -6,14 +6,14 @@ const btnStyles = {
     inactive: "bg-transparent text-gray-600"
 }
 
-export default function Button({ roundedStyle, callback, children, active }) {
+export default function Button({ roundedStyle, click, children, active, icon }) {
     return (
         <button 
             className={[ btnStyles.default, active ? btnStyles.active : btnStyles.inactive ].join(' ')}
             style={roundedStyle}
-            onClick={callback}
+            onClick={click}
         >
-            { children }
+            { icon }
         </button>
     );
 }
