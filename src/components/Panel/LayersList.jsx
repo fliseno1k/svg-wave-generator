@@ -1,13 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import {ReactComponent as Add} from '../../assets/add.svg';
+import { ReactComponent as Add } from '../../assets/add.svg';
 
-import createDefaultLayer from '../../utils/createDefaultLayer';
 
-export default function LayersList() {
-
-    const [layers, setLayers] = useState([1,2,3,4].map(_ => createDefaultLayer()));
-    const [layerID, setLayerID] = useState(layers[0].id);
+export default function LayersList({ layerID, layers, setLayerID, addLayer }) {
 
     return (
         <div className=" bg-gray-100 rounded-lg overflow-x-auto">
@@ -15,7 +11,7 @@ export default function LayersList() {
                 <li className="mr-2">
                     <div 
                         className="w-8 h-8 rounded-lg cursor-pointer text-indigo-400 bg-indigo-200 flex items-center justify-center"
-                        onClick={() => console.log('add')}
+                        onClick={addLayer}
                     >
                         <Add className="w-4 h-4 fill-current" />
                     </div>

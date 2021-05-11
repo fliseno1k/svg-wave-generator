@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Group, Button } from '../ButtonsGroup';
 
@@ -8,9 +8,7 @@ import { ReactComponent as Bottom } from '../../assets/bottom.svg';
 import { orientationTypes } from '../../utils/constants';
 
 
-export default function OrientationBar() {
-    const [orientation, setOrientation] = useState(orientationTypes.BOTTOM);
-
+export default function OrientationBar({ orientation, setOrientation}) {
     return (
         <Group>
             <Button

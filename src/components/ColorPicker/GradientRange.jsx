@@ -1,16 +1,11 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
 
-export default function GradientRange({ colors, onGradientChange, onThumbSelect }) {
+export default function GradientRange({ colors, currentColor, onGradientChange, onThumbSelect }) {
     const container = useRef(null);
-    // const [sliderColors, setSliderColors] = useState(colors);
-    const currentThumb = useRef(0);
+    const currentThumb = useRef(currentColor);
 
-    // useEffect(() => {
-    //     setSliderColors(colors);
-    // }, [colors]);
-
-    const onDown = (i) => {
-        currentThumb.current = i;
+    const onDown = (id) => {
+        currentThumb.current = id;
         onThumbSelect(currentThumb.current);
 
         document.addEventListener('mousemove', onMove);
@@ -18,17 +13,16 @@ export default function GradientRange({ colors, onGradientChange, onThumbSelect 
     }
 
     const onUp = (e) => {
-        // onGradientChange(sliderColors);
-
         document.removeEventListener('mousemove', onMove);
         document.removeEventListener('mouseup', onUp);
-    }
+    };
 
     const onMove = (e) => {
         const newColors = [...colors];
         newColors[currentThumb.current].offset = calcThumbOffset(e);
+
         onGradientChange(newColors);
-    }
+    };
 
     const calcThumbOffset = (e) => {
         const { clientX } = e;
@@ -46,14 +40,16 @@ export default function GradientRange({ colors, onGradientChange, onThumbSelect 
         return position;
     };
 
+    const colorsToStyle = () => {
+        return `linear-gradient(to right, ${Object.values(colors).sort((a, b) => a.offset - b.offset).map(({color, offset}) => 'rgba('+ color.join(', ')+', 1) '+ offset+'%').join(', ')})`;
+    }
+
     return (
         <div  className="relative w-full my-2">
             <div 
                 ref={container}
                 className="w-full h-8 rounded-lg"
-                style={{ 
-                    background: `linear-gradient(to right, ${Object.values(colors).sort((a, b) => a.offset - b.offset).map(({ color, offset }) => 'rgba(' + color.join(', ') + ', 1) ' + offset + '%').join(', ')})`
-                }}
+                style={{background: colorsToStyle()}}
             ></div>
             {
                 colors.map((color, i) => (

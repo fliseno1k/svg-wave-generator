@@ -63,7 +63,7 @@ export default function ColorRange({ color, onColorChange }) {
         });
 
         const { from, to, i } = spectrumRanges[targetRangeIndex];
-        const positionInsideRange = (from[i] - to[i] > 0 ? originalRGB[i] :  255 - originalRGB[i]) / 255;
+        const positionInsideRange = (to[i] - from[i] > 0 ? originalRGB[i] :  255 - originalRGB[i]) / 255;
         const { width, x } = container.current.getBoundingClientRect();
         const singleRangeWidth = width / spectrumRanges.length;
         const globalPosition = (singleRangeWidth * targetRangeIndex + singleRangeWidth * positionInsideRange) / width * 100;

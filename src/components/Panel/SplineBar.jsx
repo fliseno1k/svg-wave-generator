@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Group, Button } from '../ButtonsGroup';
 
@@ -8,9 +8,7 @@ import { ReactComponent as Step } from '../../assets/step.svg';
 
 import { splineTypes } from '../../utils/constants';
 
-export default function SplineBar() {
-    const [spline, setSpline] = useState(splineTypes.CURVE);
-
+export default function SplineBar({ spline, setSpline }) {
     return (
         <Group>
             <Button
