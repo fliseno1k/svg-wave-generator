@@ -1,31 +1,24 @@
-import React, { useState } from 'react';
+import React, { Profiler, useEffect, useState } from 'react';
 
 import Panel from './Panel';
 import Canvas from './Canvas';
 
-import createDefaultLayer from '../utils/createDefaultLayer';
 import { waveInit } from '../wave';
+import { defaultConfig } from '../utils/constants';
 
-import {
-    defaultWaveConfig, 
-} from '../utils/constants';
 
 export default function Generator() {
-    const [config, setConfig] = useState({ height: 500, complexity: 4 }); 
+    const [config, setConfig] = useState(defaultConfig); 
+    const [computedPath, setComputedPath] = useState(waveInit(config));
+    const [gradientColors, setGradientColors] = useState({
+        first: '#002bdc',
+        last: '#32ded4',
+    });
 
-    const calcNewPath = (targetLayers) => {
-        const defOpt = defaultWaveConfig;
-        defOpt.layerCount = targetLayers.length + 1;
-        const { svg } = waveInit(defOpt);
-        targetLayers.forEach((layer, i) => {
-            layer.path = svg.path[i];
-        });
+    useEffect(() => {
+        setComputedPath(waveInit(config));
+    }, [config]);
 
-        return targetLayers;
-    };
-
-    const [layers, setLayers] = useState(calcNewPath([createDefaultLayer()]));
-    const [layerID, setLayerID] = useState(layers[0].id);
 
     const handleConfigChange = (newConfig) => {
         setConfig({
@@ -34,22 +27,25 @@ export default function Generator() {
         });
     };
 
-    const handleColorsChange = (newColors) => {
-        const imLayers = [...layers];
-        imLayers.find(l => l.id === layerID).colors = newColors;
-        setLayers(imLayers);
+    const randomize = () => {
+        setComputedPath(waveInit(config));
     };
 
     return (
+        <Profiler id="check">
         <div className="bg-gray-100 px-2 pt-12 pb-16 box-border sm:px-8">
             <div className="w-full max-w-7xl flex mx-auto">
-                <Canvas layers={layers} />
+                <Canvas 
+                    computedPath={computedPath} 
+                    gradientColors={gradientColors}
+                />
                 <Panel 
                     config={config}
                     handleConfigChange={handleConfigChange}
-                    handleColorsChange={handleColorsChange}
+                    randomize={randomize}
                 />
             </div>
         </div>
+        </Profiler>
     );
 }
