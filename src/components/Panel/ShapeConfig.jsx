@@ -28,7 +28,6 @@ export default function GeometryConfig({
                 rightIcon={<High className="w-5 h-5 fill-current" />}
                 handleChange={(height) => handleConfigChange({ height })}
             />
-            
             <RangeSlider
                 title="Complexity"
                 { ...complexityRange }
@@ -47,4 +46,4 @@ export default function GeometryConfig({
             />
         </div>
     );
-};
+}
