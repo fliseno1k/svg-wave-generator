@@ -19,11 +19,15 @@ export default function Generator() {
         setComputedPath(waveInit(config));
     }, [config]);
 
+    const handleConfigChange = (changedConfig) => {
+        setConfig(prev => {
+            return { ...prev, ...changedConfig };
+        });
+    };
 
-    const handleConfigChange = (newConfig) => {
-        setConfig({
-            ...config, 
-            ...newConfig
+    const handleGradientChange = (changedGradient) => {
+        setGradientColors(prev => {
+            return { ...prev, ...changedGradient }
         });
     };
 
@@ -32,7 +36,7 @@ export default function Generator() {
     };
 
     return (
-        <Profiler id="check">
+        <Profiler id="prf">
         <div className="bg-gray-100 px-2 pt-12 pb-16 box-border sm:px-8">
             <div className="w-full max-w-7xl flex mx-auto">
                 <Canvas 
@@ -42,6 +46,8 @@ export default function Generator() {
                 <Panel 
                     config={config}
                     handleConfigChange={handleConfigChange}
+                    gradient={gradientColors}
+                    handleGradientChange={handleGradientChange}
                     randomize={randomize}
                 />
             </div>
