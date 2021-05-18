@@ -18,7 +18,7 @@ export default function RangeGroup({
             </h4>
             <div className="flex mt-2">
                 <button
-                    className="w-10 h-10 flex items-center justify-center flex-none rounded-full shadow-sm bg-indigo-400 text-white"
+                    className="w-10 h-10 flex items-center justify-center flex-none rounded-full shadow-sm bg-indigo-400 text-white focus:outline-none focus:ring-4 focus:ring-indigo-200"
                     onClick={() => handleChange(Math.max(value - step, min))}
                 >
                     { leftIcon }
@@ -33,7 +33,7 @@ export default function RangeGroup({
                     onChange={(e) => handleChange(e.target.value)}
                 ></input>
                 <button
-                    className="w-10 h-10 flex items-center justify-center flex-none rounded-full shadow-sm bg-indigo-400 text-white"
+                    className="w-10 h-10 flex items-center justify-center flex-none rounded-full shadow-sm bg-indigo-400 text-white focus:outline-none focus:ring-4 focus:ring-indigo-200"
                     onClick={() => handleChange(Math.min(value + step, max))}
                 >
                     { rightIcon }
