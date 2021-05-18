@@ -28,3 +28,22 @@ export const defaultConfig = {
     fillColor: '#fff0080',
     strokeColor: 'none'
 };
+
+export const gradientTempltates = [
+    {
+        first: '#d00117',
+        last: '#1d2acf'
+    },
+    {
+        first: '#1dcf58',
+        last: '#01d0ae'
+    },
+    {
+        first: '#1d78cf',
+        last: '#01d0ae'
+    },
+    {
+        first: '#d00141',
+        last: '#1d78cf'
+    }
+];
