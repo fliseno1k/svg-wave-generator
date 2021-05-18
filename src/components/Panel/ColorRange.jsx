@@ -77,7 +77,7 @@ export default function ColorRange({
         <div className="relative w-full bg-white">
             <div 
                 ref={container} 
-                // onClick={onMove}
+                onClick={onMove}
                 onMouseDown={onDown}
                 className="w-full h-8 rounded-lg cursor-pointer" 
                 style={{background: linearGradient}}
