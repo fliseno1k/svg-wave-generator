@@ -1,15 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import ColorRange from './ColorRange';
+
+import  { gradientTempltates } from '../../utils/constants';
 
 export default React.memo(function GradientPicker({ 
     gradient, 
     handleGradientChange 
 }) {
     const [currentColor, setCurrentColor] = useState(Object.keys(gradient)[0]);
+    const [templates, setTemplates] = useState([gradient, ...gradientTempltates]);
+    const [currentTemplate, setCurrentTemplate] = useState(0);
+
+    useEffect(() => {
+        setTemplates(prev => {
+            prev[currentTemplate] = gradient;
+            return prev;
+        });
+    }, [gradient]);
 
     const handleColorSelect = (newColorValue) => {
         handleGradientChange(Object.fromEntries([[currentColor, newColorValue]]));
+    };
+
+    const handleTemplateSelect = (i) => {
+        setCurrentTemplate(i);
+        handleGradientChange(templates[i]);
     };
 
     return(
@@ -36,6 +52,21 @@ export default React.memo(function GradientPicker({
                 <div className="flex flex-auto">
                     <ColorRange handleColorSelect={handleColorSelect} />
                 </div>
+            </div>
+            <div className="flex items-center mt-3 p-2 bg-gray-100 rounded-lg">
+                <ul className='w-full flex justify-end'>
+                    {  
+                        templates.map((t, i) => {
+                            return (
+                                <li
+                                    onClick={() => handleTemplateSelect(i)}
+                                    style={{background: `linear-gradient(to right, ${t.first} 5%, ${t.last} 95%)`}}
+                                    className={`w-8 h-8 rounded-lg mr-2 cursor-pointer ${currentTemplate === i ? 'ring-4 ring-indigo-200 border-2 border-white' : ''}`}
+                                ></li>
+                            );
+                        })
+                    }
+                </ul>
             </div>
         </div>
     );
