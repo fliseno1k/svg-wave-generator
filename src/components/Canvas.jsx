@@ -1,10 +1,11 @@
 import React from 'react';
 
-export default function Canvas({ computedPath, gradientColors }) {
+export default function Canvas({ computedPath, gradientColors, forwardedRef }) {
     return (
         <div className="relative flex flex-auto mr-4 rounded-lg overflow-hidden shadow-sm bg-white">
             <div className="absolute bottom-0 left-0 w-full">
                 <svg
+                    ref={forwardedRef}
                     width="100%"
                     height="100%"
                     viewBox={`0 0 1440 ${computedPath.svg.height}`}
