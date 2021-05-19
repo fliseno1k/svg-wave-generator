@@ -1,4 +1,5 @@
-import React, { Profiler, useEffect, useState } from 'react';
+import React, { Profiler, useEffect, useRef, useState } from 'react';
+import { useModal } from '../contexts/ModalContext';
 
 import Panel from './Panel';
 import Canvas from './Canvas';
@@ -14,6 +15,8 @@ export default function Generator() {
         first: '#002bdc',
         last: '#32ded4',
     });
+    const svgRef = useRef();
+    const { show } = useModal();
 
     useEffect(() => {
         setComputedPath(waveInit(config));
@@ -35,11 +38,16 @@ export default function Generator() {
         setComputedPath(waveInit(config));
     };
 
+    const download = () => {
+        show(svgRef.current);
+    };
+
     return (
         <Profiler id="prf">
         <div className="bg-gray-100 px-2 pt-12 pb-16 box-border sm:px-8">
             <div className="w-full max-w-7xl flex mx-auto">
                 <Canvas 
+                    forwardedRef={svgRef}
                     computedPath={computedPath} 
                     gradientColors={gradientColors}
                 />
@@ -49,6 +57,7 @@ export default function Generator() {
                     gradient={gradientColors}
                     handleGradientChange={handleGradientChange}
                     randomize={randomize}
+                    download={download}
                 />
             </div>
         </div>
