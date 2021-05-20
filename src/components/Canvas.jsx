@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Canvas({ computedPath, gradientColors, forwardedRef }) {
     return (
-        <div className="relative flex flex-auto mr-4 rounded-lg overflow-hidden shadow-sm bg-white">
+        <div className="relative flex flex-auto mb-4 rounded-lg overflow-hidden shadow-sm bg-white h-64 sm:mr-4 sm:h-auto sm:m-0">
             <div className="absolute bottom-0 left-0 w-full">
                 <svg
                     ref={forwardedRef}

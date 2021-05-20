@@ -44,8 +44,8 @@ export default function Generator() {
 
     return (
         <Profiler id="prf">
-        <div className="bg-gray-100 px-2 pt-12 pb-16 box-border sm:px-8">
-            <div className="w-full max-w-7xl flex mx-auto">
+        <div className="relative bg-gray-100 px-2 pt-12 pb-16 box-border sm:px-8">
+            <div className="w-full max-w-7xl mx-auto flex flex-col sm:flex-row">
                 <Canvas 
                     forwardedRef={svgRef}
                     computedPath={computedPath} 
