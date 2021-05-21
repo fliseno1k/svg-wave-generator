@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ReactComponent as WaveIcon } from '../assets/wave.svg';
-import { ReactComponent as GitHubIcon } from '../assets/github.svg';
+import { ReactComponent as GitHubIcon } from '../assets/social/github.svg';
 
 export default function Header() {
     return (
