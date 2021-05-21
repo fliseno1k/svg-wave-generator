@@ -16,16 +16,16 @@ export default function Panel({
     download
 }) {  
     return (
-        <div className="relative w-96 p-8 pb-16 bg-white rounded-xl">
+        <div className="relative p-8 pb-16 bg-white rounded-xl w-full sm:w-72 md:w-96">
             <div className="flex flex-col">
                 <div className="w-full flex flex-col">
                     <ShapeConfig config={config} handleConfigChange={handleConfigChange} />
                     <GradientPicker gradient={gradient} handleGradientChange={handleGradientChange} />
                 </div>
             </div>   
-            <div className="flex absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2">
+            <div className="flex absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 sm:bottom-0 sm:top-auto sm:translate-y-1/2">
                 <button 
-                    onClick={randomize} 
+                    onClick={randomize}
                     className="border-4 border-gray-100 px-6 py-4 flex items-center justify-center bg-indigo-400 text-white rounded-full transform transition-all hover:bg-indigo-600 hover:border-indigo-200 focus:outline-none focus:border-indigo-200"
                 >
                     <Random className="fill-current w-8 h-8" />
