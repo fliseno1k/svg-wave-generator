@@ -14,31 +14,34 @@ export default function Canvas({ computedPath, gradientColors, forwardedRef }) {
                     // preserveAspectRatio="none"
                 >
                     {
-                        computedPath.svg.path.map((path, i) => (
-                            <g key={i}>
-                                <defs>
-                                    <linearGradient id={'gradient' + i}>
-                                        <stop 
-                                            offset="5%" 
-                                            stopColor={gradientColors.first} 
-                                            stopOpacity={(i + 1) / computedPath.svg.path.length}
-                                        />
-                                        <stop 
-                                            offset="95%" 
-                                            stopColor={gradientColors.last} 
-                                            stopOpacity={(i + 1) / computedPath.svg.path.length}
-                                        />
-                                    </linearGradient>
-                                </defs>
-                                <path
-                                    d={path.d}
-                                    stroke={path.strokeColor}
-                                    strokeWidth={path.strokeWidth}
-                                    fill={`url(#${'gradient' + i})`}
-                                    className="transition-all duration-500 ease-in-out delay-150"
-                                />
-                            </g>
-                        ))
+                        computedPath.svg.path.map((path, i) => {
+                            const uniqueId = '_' + Math.random().toString(36).substr(2, 9);
+                            return (
+                                <g key={i}>
+                                    <defs>
+                                        <linearGradient id={uniqueId}>
+                                            <stop 
+                                                offset="5%" 
+                                                stopColor={gradientColors.first} 
+                                                stopOpacity={(i + 1) / computedPath.svg.path.length}
+                                            />
+                                            <stop 
+                                                offset="95%" 
+                                                stopColor={gradientColors.last} 
+                                                stopOpacity={(i + 1) / computedPath.svg.path.length}
+                                            />
+                                        </linearGradient>
+                                    </defs>
+                                    <path
+                                        d={path.d}
+                                        stroke={path.strokeColor}
+                                        strokeWidth={path.strokeWidth}
+                                        fill={`url(#${uniqueId})`}
+                                        className="transition-all duration-500 ease-in-out"
+                                    />
+                                </g>
+                            );
+                        })
                     }
                 </svg>
             </div>
