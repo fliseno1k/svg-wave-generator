@@ -14,7 +14,7 @@ export default function Header() {
                     </div>
                 </div>    
                 <div className="flex items-center">
-                    <a href="/" className="cursor-pointer rounded-full text-gray-600 focus:outline-none transition-transform duration-300 transform rotate-0 focus:-rotate-45">
+                    <a href="https://github.com/fliseno1k" className="cursor-pointer rounded-full text-gray-600 focus:outline-none transition-transform duration-300 transform rotate-0 focus:-rotate-45">
                         <GitHubIcon width="30" alt={"Github"} className="fill-current" />
                     </a>
                 </div>
