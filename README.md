@@ -1,4 +1,4 @@
-# [Wavify it](https://svg-wave-generator-kphp52lqt-fliseno1k.vercel.app/) - svg wave generator
+# [Wavify it](https://wavifyit.vercel.app) - svg wave generator
 Gradient svg wave generator with friendly interface that help you create awesome graphics for your website or other project design. 
 
 ---
