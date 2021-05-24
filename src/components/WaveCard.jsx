@@ -1,8 +1,8 @@
-import React, { useRef } from 'react';
+import React, { useRef, memo } from 'react';
 
 import {ReactComponent as Download} from '../assets/download.svg';
 
-export default function WaveCard({ Icon, download }) {
+export default memo(function WaveCard({ Icon, download }) {
     const svgRef = useRef();
 
     return (
@@ -20,4 +20,4 @@ export default function WaveCard({ Icon, download }) {
             </div>
         </div>
     );
-}
+});

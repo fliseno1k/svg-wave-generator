@@ -1,4 +1,4 @@
-import React, { Profiler, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useModal } from '../contexts/ModalContext';
 
 import Panel from './Panel';
@@ -22,28 +22,27 @@ export default function Generator() {
         setComputedPath(waveInit(config));
     }, [config]);
 
-    const handleConfigChange = (changedConfig) => {
+    const handleConfigChange = useCallback((changedConfig) => {
         setConfig(prev => {
             return { ...prev, ...changedConfig };
         });
-    };
+    }, [setConfig]);
 
-    const handleGradientChange = (changedGradient) => {
+    const handleGradientChange = useCallback((changedGradient) => {
         setGradientColors(prev => {
             return { ...prev, ...changedGradient }
         });
-    };
+    }, [setGradientColors]);
 
-    const randomize = () => {
+    const randomize = useCallback(() => {
         setComputedPath(waveInit(config));
-    };
+    }, [setComputedPath, config]);
 
-    const download = () => {
+    const download = useCallback(() => {
         show(svgRef.current);
-    };
+    }, [show]);
 
     return (
-        <Profiler id="prf">
         <div className="relative bg-gray-100 px-2 pt-12 pb-16 box-border sm:px-8">
             <div className="w-full max-w-7xl mx-auto flex flex-col sm:flex-row">
                 <Canvas 
@@ -61,6 +60,5 @@ export default function Generator() {
                 />
             </div>
         </div>
-        </Profiler>
     );
 }

@@ -4,7 +4,7 @@ import { ReactComponent as Close } from '../assets/cancel.svg';
 import { useModal } from '../contexts/ModalContext';
 
 export default function DownloadModal() {
-    const { visible, hide, svg } = useModal();
+    const { visible, svg, hide } = useModal();
 
     if (!visible) return null;
 

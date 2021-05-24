@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { memo } from 'react';
 
-export default function Canvas({ computedPath, gradientColors, forwardedRef }) {
+export default memo(function Canvas({ 
+    computedPath, 
+    gradientColors, 
+    forwardedRef 
+}) {
     return (
         <div className="relative flex flex-auto mb-4 rounded-lg overflow-hidden shadow-sm bg-white h-64 sm:mr-4 sm:h-auto sm:m-0">
             <div className="absolute bottom-0 left-0 w-full">
@@ -47,4 +51,4 @@ export default function Canvas({ computedPath, gradientColors, forwardedRef }) {
             </div>
         </div>
     );
-};
+});

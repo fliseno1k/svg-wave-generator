@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import RangeSlider from './RangeSlider';
 
 import { ReactComponent as Low } from '../../assets/waveLow.svg';
@@ -14,7 +14,7 @@ import {
     layersCountRange
 } from '../../utils/constants'
 
-export default function GeometryConfig({ 
+export default memo(function GeometryConfig({ 
     config, 
     handleConfigChange 
 }) {
@@ -46,4 +46,4 @@ export default function GeometryConfig({
             />
         </div>
     );
-}
+});

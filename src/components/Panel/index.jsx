@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import ShapeConfig from './ShapeConfig';
 import GradientPicker from './GradientPicker';
@@ -7,7 +7,7 @@ import { ReactComponent as Random } from '../../assets/random.svg';
 import { ReactComponent as Download } from '../../assets/download.svg';
 
 
-export default function Panel({
+export default memo(function Panel({
     config,
     handleConfigChange,
     gradient, 
@@ -40,4 +40,4 @@ export default function Panel({
             </div>
         </div>
     );
-}
+});

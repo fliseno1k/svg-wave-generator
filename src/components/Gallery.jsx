@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 import { ReactComponent as One } from '../assets/gallerysvgs/1.svg';
 import { ReactComponent as Two } from '../assets/gallerysvgs/2.svg';
@@ -17,9 +17,9 @@ import { useModal } from '../contexts/ModalContext';
 
 export default function Gallery() {
     const { show } = useModal();
-    const icons = [One, Two, Three, Four, Five, Six, Seven, Eight, Nine];
+    const icons = useRef([One, Two, Three, Four, Five, Six, Seven, Eight, Nine]);
 
-    return(
+    return (
         <div className="px-2 py-8">
             <div className="relative w-full max-w-7xl mx-auto">
                 <div className="text-center pt-8 pb-16">
@@ -31,7 +31,7 @@ export default function Gallery() {
             </div>  
             <div className="max-w-7xl py-4 mx-auto grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
                 {
-                    icons.map((icon, i) => <WaveCard key={i} Icon={icon} download={show} />)
+                    icons.current.map((icon, i) => <WaveCard key={i} Icon={icon} download={show} />)
                 }
             </div>  
         </div>
