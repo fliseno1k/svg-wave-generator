@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 
 import { ReactComponent as One } from '../assets/gallerysvgs/1.svg';
 import { ReactComponent as Two } from '../assets/gallerysvgs/2.svg';
@@ -31,7 +31,7 @@ export default function Gallery() {
             </div>  
             <div className="max-w-7xl py-4 mx-auto grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
                 {
-                    icons.map((icon, i) => <WaveCard Icon={icon} download={show} />)
+                    icons.map((icon, i) => <WaveCard key={i} Icon={icon} download={show} />)
                 }
             </div>  
         </div>

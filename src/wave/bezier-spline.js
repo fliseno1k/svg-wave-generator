@@ -13,15 +13,15 @@
  */
 /*computes control points given knots K, this is the brain of the operation*/
 export function computeControlPoints(K) {
-    let p1 = new Array()
-    let p2 = new Array()
+    let p1 = []
+    let p2 = []
     let n = K.length - 1
   
     /*rhs vector*/
-    let a = new Array()
-    let b = new Array()
-    let c = new Array()
-    let r = new Array()
+    let a = []
+    let b = []
+    let c = []
+    let r = []
   
     /*left most segment*/
     a[0] = 0

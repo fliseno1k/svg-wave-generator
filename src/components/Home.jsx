@@ -10,7 +10,7 @@ import Footer from './Footer';
 
 export default function Home() { 
     return (
-        <Profiler>
+        <Profiler id="generator">
             <ModalProvider>
                 <div className="relative min-h-screen">
                     <Header />

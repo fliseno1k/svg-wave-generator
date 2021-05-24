@@ -17,7 +17,7 @@ export default React.memo(function GradientPicker({
             prev[currentTemplate] = gradient;
             return prev;
         });
-    }, [gradient]);
+    }, [gradient, currentTemplate]);
 
     const handleColorSelect = (newColorValue) => {
         handleGradientChange(Object.fromEntries([[currentColor, newColorValue]]));
@@ -59,6 +59,7 @@ export default React.memo(function GradientPicker({
                         templates.map((t, i) => {
                             return (
                                 <li
+                                    key={i}
                                     onClick={() => handleTemplateSelect(i)}
                                     style={{background: `linear-gradient(to right, ${t.first} 5%, ${t.last} 95%)`}}
                                     className={`w-8 h-8 rounded-lg mr-2 cursor-pointer ${currentTemplate === i ? 'ring-4 ring-indigo-200 border-2 border-white' : ''}`}
