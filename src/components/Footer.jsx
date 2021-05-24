@@ -16,13 +16,13 @@ export default function Footer() {
                     </a>
                 </div>
                 <div className="grid grid-cols-3 gap-4">
-                    <a href="/" className="inline focus:outline-none text-indigo-400">
+                    <a href="https://www.buymeacoffee.com/alexeyfl" className="inline focus:outline-none text-indigo-400">
                         <VK className="inline-block h-8 fill-current" />
                     </a>
-                    <a href="/" className="inline focus:outline-none text-indigo-400">
+                    <a href="https://twitter.com/alexeyfl_" className="inline focus:outline-none text-indigo-400">
                         <Twitter className="inline-block h-8 fill-current" />
                     </a>
-                    <a href="/" className="inline focus:outline-none text-indigo-400">
+                    <a href="https://www.instagram.com/alekseifl/" className="inline focus:outline-none text-indigo-400">
                         <Instagram className="inline-block h-8 fill-current" />
                     </a>
                 </div>
